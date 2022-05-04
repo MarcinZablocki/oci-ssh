@@ -31,3 +31,6 @@ Use Oracle Cloud search to automate SSH connections
 e.g.
 
 `ssh oci+myserver+us-ashburn-1` or `ssh oci+myserver+us-ashburn-1+mytenancyprofile`
+
+## Limitations
+If multiple instances have the same display name, the script will return IP address of the first one. 
