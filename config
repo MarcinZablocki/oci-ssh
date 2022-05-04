@@ -1,0 +1,4 @@
+host oci*
+  user opc
+  ProxyCommand bash -c "nc $(~/.ssh/oci-ssh/oci-ssh.py $(echo %h | awk -F"+" '{print $2" "$3" "$4}')) %p"
+
