@@ -3,17 +3,16 @@
 import click
 import oci
 
+config = oci.config.from_file()
+
 @click.command()
 @click.argument('hostname')
-@click.argument('region')
+@click.argument('region', default=config['region'])
 @click.argument('profile', default='DEFAULT')
-def cli(hostname, region, profile='DEFAULT'):
-    
+def cli(hostname, region=config['region'], profile='DEFAULT'):
+      
     config = oci.config.from_file(profile_name=profile)
-    if not region: 
-        region = config['region']
-    else: 
-        config['region'] = region
+    config['region'] = region
 
     #print(hostname, region, compartment, profile)
     c = oci.core.ComputeClient(config)
